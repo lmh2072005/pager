@@ -9,7 +9,7 @@ the pager depends on the jquery  and the jsrender.
 
 ### usage
 1. html  
-use the wrap that show the pager and the data-list:
+
 ### 比如我们可以在多行文本框里输入一段代码,来一个Java版本的HelloWorld吧
     <ul id="simpleListBox"></ul>
     <div id="simplePageBox"></div>
