@@ -60,8 +60,10 @@ user the function pager.init
 		    pagerInit : function(){}   //callback after pager init
 		});
 
-### the demo ui
-![易讯分页](https://raw.github.com/lmh2072005/pager/master/demo/yixun.jpg "yixun pager")
+## the demo pager ui
+![易讯分页](https://raw.github.com/lmh2072005/pager/master/demo/yixun.jpg "易讯分页效果")
+<br/>
+![简单分页](https://raw.github.com/lmh2072005/pager/master/demo/simple.jpg "简单分页效果")
 
 ## License
 
