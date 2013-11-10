@@ -15,9 +15,9 @@ usage
     <div id="simplePageBox"></div>
 
 ### 2. jsrender template
-### a. pager template: just notice the formart about the className and the data-page attribute with the correct element.
-### eg: class="pageRead"  data-page="first" .
-### .yxPager is the pager ui className.
+a. pager template: just notice the formart about the className and the data-page attribute with the correct element.
+eg: class="pageRead"  data-page="first" .
+.yxPager is the pager ui className.
 
 		<script id="pageSimpleTemp" type="text/x-jsrender">
 		  <div class="yxPager">
@@ -40,13 +40,13 @@ usage
 		  </div>
 		</script>
 
-### b. data-list template:
+b. data-list template:
 		<script id="listTemp" type="text/x-jsrender">
 		   <li>时间：{{>DateTime}} amount：{{>Amount}}</li>
 		</script>
 
 ### 3. javascript 
-### user the function pager.init
+user the function pager.init
 
 		pager.init({
 		    listTemp:$('#listTemp'),   //data-list template
