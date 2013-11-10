@@ -16,7 +16,7 @@ use the wrap that show the pager and the data-list.
 		<div id="simplePageBox"></div>
 
 ### 2. jsrender template
-a. pager template: just notice the formart about the className and the data-page attribute with the correct element.
+a. pager template: just notice the format about the className and the data-page attribute with the correct element.
 eg: class="pageRead"  data-page="first" .
 .yxPager is the pager ui className.
 
