@@ -12,7 +12,17 @@ the pager depends on the jquery  and the jsrender.
 use the wrap that show the pager and the data-list:
     <ul id="simpleListBox"></ul>
     <div id="simplePageBox"></div>
+    public class HelloWorld {
 
+      /**
+      * @param args
+	    */
+	    public static void main(String[] args) {
+		    System.out.println("HelloWorld!");
+
+	    }
+
+    }
 
 2. jsrender template
 just notice the formart about the className and the data-page attribute with the correct element.
