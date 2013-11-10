@@ -60,6 +60,8 @@ user the function pager.init
 		    pagerInit : function(){}   //callback after pager init
 		});
 
+### the demo ui
+![yixun pager:](https://github.com/lmh2072005/pager/blob/master/demo/yixun.jpg "yixun pager")
 
 ## License
 
