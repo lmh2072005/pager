@@ -12,6 +12,11 @@ the pager depends on the jquery  and the jsrender.
 use the wrap that show the pager and the data-list:
     <ul id="simpleListBox"></ul>
     <div id="simplePageBox"></div>
+### 多行文本框  
+    这是一个有多行的文本框
+    你可以写入代码等,每行文字只要输入两个Tab再输入文字即可
+    这里你可以输入一段代码
+
 ### 比如我们可以在多行文本框里输入一段代码,来一个Java版本的HelloWorld吧
     public class HelloWorld {
 
@@ -24,6 +29,7 @@ use the wrap that show the pager and the data-list:
 	    }
 
     }
+### 链接
 
 2. jsrender template
 just notice the formart about the className and the data-page attribute with the correct element.
