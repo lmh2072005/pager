@@ -61,3 +61,6 @@ user the function pager.init
 		});
 
 
+## License
+
+pager is available under the terms of the [MIT License](https://github.com/lmh2072005/pager/blob/master/LICENSE).
