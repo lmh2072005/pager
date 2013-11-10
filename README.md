@@ -41,6 +41,7 @@ eg: class="pageRead"  data-page="first" .
 		</script>
 
 b. data-list template:
+###  
 		<script id="listTemp" type="text/x-jsrender">
 		   <li>时间：{{>DateTime}} amount：{{>Amount}}</li>
 		</script>
