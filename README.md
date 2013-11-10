@@ -10,9 +10,10 @@ the pager depends on the jquery  and the jsrender.
 ###usage
 1. html  
 use the wrap that show the pager and the data-list:
- 
+...
 <ul id="simpleListBox"></ul>
 <div id="simplePageBox"></div>
+...
 
 2. jsrender template
 just notice the formart about the className and the data-page attribute with the correct element.
