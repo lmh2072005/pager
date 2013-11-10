@@ -61,7 +61,7 @@ user the function pager.init
 		});
 
 ### the demo ui
-![github](https://github.com/lmh2072005/pager/blob/master/demo/yixun.jpg "yixun pager")
+![易讯分页](https://raw.github.com/lmh2072005/pager/master/demo/yixun.jpg "yixun pager")
 
 ## License
 
