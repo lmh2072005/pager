@@ -1,0 +1,218 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <!-- <meta charset="UTF-8"> -->
+    <title></title>
+    <style type="text/css">
+        html,body
+        {
+            font:12px/1.5 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        *{margin:0;padding:0;}
+        ul li{list-style:none;}
+        .pager .cur{
+            color:#FF6500;
+          }
+          body{
+            padding:100px;
+          }
+          .yxPager{
+                padding:15px 0 20px;
+          }
+          .yxPager a, .yxPager .pageHide, .yxPager .cur, .yxPager .pageRead{
+                border: 1px solid #C9C9C9;
+                display:inline-block;
+                background-color:#fff;
+                padding:0 15px;
+                height:30px;
+                line-height:30px;
+                margin-left:5px;
+                overflow:hidden;
+                color:#333;
+                text-decoration:none;
+          }
+          .yxPager .pageHide{
+                border:none;
+                padding:0 12px;
+                line-height:24px;
+          }
+          .yxPager a:hover{
+                border-color:#aaa;
+                text-decoration:none;
+          }
+          .yxPager .cur{
+                border:1px solid #2266BB;
+                background-color:#2266BB;
+                color:#fff;
+                cursor:default;
+          }
+          .yxPager .jumpPage{
+                border:1px solid #C9C9C9;
+                height:22px;
+                line-height:22px;
+                margin:0 2px;
+                text-align:center;
+                width:35px;
+                color:#666;
+          }
+           .yxPager .infoBox{
+                display:inline-block;
+                height:30px;
+                line-height:30px;
+                color:#666;
+                margin-left:10px;
+                overflow:hidden;
+           }
+           .yxPager .infoBox input{
+                *position:relative;
+                *top:3px;
+           }
+    </style>
+</head>
+<body>
+<ul class="list" id="staticListBox"></ul>
+<div id="staticPageBox"></div><br /><br />
+
+<ul class="list" id="listBox"></ul>
+<div id="pageBox"></div>
+
+<ul class="list" id="simpleListBox"></ul>
+<div id="simplePageBox"></div>
+
+<script id="staticPageTemp" type="text/x-jsrender">
+  <div class="pager">
+  {{for pageSize}}
+      <a href="javascript:;" data-page="{{:#index+1}}">{{:#index+1}}</a>
+  {{/for}}
+  <span class="infoBox">共{{>totalPage}}页
+  </div>
+</script>
+
+<script id="pageSimpleTemp" type="text/x-jsrender">
+  <div class="pager yxPager">
+   {{if curPage == 1}}
+            <span class="pageRead">首页</span>
+            <span class="pageRead">上一页</span>
+    {{else}}
+            <a href="javascript:;" data-page="first">首页</a>
+            <a href="javascript:;" data-page="prev">上一页</a>
+    {{/if}}
+    {{if curPage == totalPage}}
+     <span class="pageRead">下一页</span>
+     <span class="pageRead">末页</span>
+     {{else}}
+    <a href="javascript:;" data-page="next">下一页</a>
+    <a href="javascript:;" data-page="last">末页</a>
+    {{/if}}
+  <span class="infoBox">共{{>totalPage}}页，当前第{{>curPage}}页，到第<input type="text" class="jumpPage" value="{{>curPage}}" />页</span>
+  <a href="javascript:;" data-page="jump">确定</a>
+  </div>
+</script>
+
+<script id="pageTemp" type="text/x-jsrender">
+<div class="pager yxPager">
+    {{if curPage == 1}}
+            <span class="pageRead">上一页</span>
+    {{else}}
+            <a href="javascript:;" data-page="prev">上一页</a>
+    {{/if}}
+      {{>~format(pageSize, curPage)}}
+     {{if curPage == totalPage}}
+     <span class="pageRead">下一页</span>
+     {{else}}
+    <a href="javascript:;" data-page="next">下一页</a>
+    {{/if}}
+    <span class="infoBox">共{{>totalPage}}页，到第<input type="text" class="jumpPage" value="{{>curPage}}" />页</span>
+    <a href="javascript:;" data-page="jump">确定</a>
+</div>
+</script>
+
+<script id="listTemp" type="text/x-jsrender">
+   <li>时间：{{>DateTime}} amount：{{>AmountChina}}</li>
+</script>
+<script id="staticListTemp" type="text/x-jsrender">
+   <li>名字：{{>name}}</li>
+</script>
+<script src="../lib/jquery-1.10.2.min.js"></script>
+<script src="../lib/jsrender.js"></script>
+<script src="../pager.js"></script>
+<script>
+$(function(){
+        $.views.helpers({
+                format: function( pageSize, curPage ) {
+                    var pageStr = '';
+                    for(var i = 0 ; i < pageSize.length ; i ++){
+                         if(curPage < 7){   //front  12345...10
+                                if(i  < 9 || i == pageSize.length - 1){
+                                       if( i == curPage - 1){
+                                            pageStr += '<span class="cur">'+(i+1)+'</span>';
+                                       }else{
+                                            pageStr +=  '<a href="javascript:;" data-page="'+(i+1)+'">'+(i+1)+'</a>';
+                                       }
+                                }else if(!/pageHide/.test(pageStr)) {
+                                        pageStr += '<span class="pageHide">...</span>'
+                                }
+                         }else if(curPage > pageSize.length - 5){  //middle   1...234...10
+                                if(i  == 0 || i > pageSize.length - 9 ){
+                                      if( i == curPage - 1){
+                                            pageStr += '<span class="cur">'+(i+1)+'</span>';
+                                       }else{
+                                            pageStr +=  '<a href="javascript:;" data-page="'+(i+1)+'">'+(i+1)+'</a>';
+                                       }
+                                }else if(!/pageHide/.test(pageStr)) {
+                                        pageStr += '<span class="pageHide">...</span>'
+                                }
+                         }else {    //  behind   1...78910
+                                if(i == 0 || i == pageSize.length -1 || (i > curPage - 5 && i < curPage + 3)){
+                                       if( i == curPage - 1){
+                                            pageStr += '<span class="cur">'+(i+1)+'</span>';
+                                       }else{
+                                            pageStr +=  '<a href="javascript:;" data-page="'+(i+1)+'">'+(i+1)+'</a>';
+                                       }
+                                }else if(i == 1 || i == pageSize.length - 2){
+                                        pageStr += '<span class="pageHide">...</span>'
+                                }
+                         }
+                    }
+                    return pageStr;
+                }
+            });
+     var pageData = {
+        'total' : 10,
+        'limit' : 2,
+        'rows' : [{'name':'test1'},{'name':'test2'},{'name':'test3'},{'name':'test4'},{'name':'test5'},{'name':'test6'},{'name':'test7'},{'name':'test8'},{'name':'test9'},{'name':'test10'}]
+      };
+
+      pager.init({
+          listTemp:$('#staticListTemp'),
+          listTempWrap:$('#staticListBox'),
+          pageTemp : $('#staticPageTemp'),
+          pageTempWrap : $('#staticPageBox'),
+          staticData : pageData
+      });
+
+      pager.init({
+          listTemp:$('#listTemp'),
+          listTempWrap:$('#listBox'),
+          pageTemp : $('#pageTemp'),
+          pageTempWrap : $('#pageBox'),
+          url : '../index.php',
+          limit : 2,
+          pagerInit : function(){}
+      });
+
+      pager.init({
+          listTemp:$('#listTemp'),
+          listTempWrap:$('#simpleListBox'),
+          pageTemp : $('#pageSimpleTemp'),
+          pageTempWrap : $('#simplePageBox'),
+          url : '../index.php',
+          limit : 2,
+          pagerInit : function(){}
+      });
+      //返回格式：{"success":true,"total":4,"rows":[{"name":"test3"},{"name":"test4"}]}
+})
+</script>
+</body>
+</html>

@@ -9,13 +9,13 @@
             var option = {
                     start : 0,
                     limit : 10,
-                    listTemp : null,
-                    listTempWrap : null,
-                    pageTemp : null,
-                    pageTempWrap : null,
-                    url : '',
-                    staticData : {'total' : 0, 'start' : 0, 'limit' : 10, 'rows' : []},
-                    pagerInit : function(){}
+                    listTemp : null,     //data-list template
+                    listTempWrap : null,  // data-list  wrap
+                    pageTemp : null,  // pager template
+                    pageTempWrap : null,  // pager wrap
+                    url : '',   // request url
+                    staticData : {'total' : 0, 'start' : 0, 'limit' : 10, 'rows' : []},   // static data
+                    pagerInit : function(){}  // pager init callback
                 },
                 o = $.extend(option, opts);
                 o.render = function(listData, pageData, fn){
